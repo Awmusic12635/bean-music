@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Scratch Example</title>
+</head>
+<body>
+	<div>
+		<label for="red"></label>
+		<input type="range" id="red" min="0" value="10" max="255" step="1" onInput="outputUpdate('red',value)" />
+		<output for="red" id="redValue">10</output>
+	</div>
+	<div>
+		<label for="green"></label>
+		<input type="range" id="green" min="0" value="10" max="255" step="1" onInput="outputUpdate('green',value)" />
+		<output for="green" id="greenValue">10</output>
+	</div>
+	<div>
+		<label for="blue"></label>
+		<input type="range" id="blue" min="0" value="10" max="255" step="1" onInput="outputUpdate('blue',value)" />
+		<output for="blue" id="blueValue">10</output>
+	</div>
+	<div>
+		<input type="button" id="temp" value="getTemp" onClick="getTemp()"/>
+		<input type="button" id="off" value="LED Off" onClick="turnOff()"/>
+	</div>
+	<div id="currentTemp">
+	</div>
+	<script src="main.js"></script>
+</body>
+</html>

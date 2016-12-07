@@ -1,0 +1,26 @@
+{
+  "name": "bean-music",
+  "version": "0.0.1",
+  "description": "Music with beans",
+  "main": "server.js",
+  "dependencies": {
+    "noble": "^1.7.0",
+    "websocket": "^1.0.23",
+    "utf8": "^2.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Awmusic12635/bean-music.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Awmusic12635/bean-music/issues"
+  },
+  "homepage": "https://github.com/Awmusic12635/bean-music#readme"
+}
