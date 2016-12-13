@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>Bean Conductor</title>
+        <script
+                src="https://code.jquery.com/jquery-3.1.1.min.js"
+                integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+                crossorigin="anonymous"></script>
+        <script src="/socket.io/socket.io.js"></script>
+
+    </head>
+    <body>
+
+        <button class="play" type="button">c2</button>
+        <button class="play" type="button">d2</button>
+        <button class="play" type="button">e2</button>
+        <button class="play" type="button">f2</button>
+        <button class="play" type="button">g2</button>
+        <button class="play" type="button">a2</button>
+        <button class="play" type="button">b2</button>
+        <button class="play" type="button">c3</button>
+
+        <button class="playsong" type="button">rowrowyourboat</button>
+        <button class="playsong" type="button">starwars</button>
+        <script>
+            var socket = io();
+            $('.play').mouseup(function() {
+                socket.emit("STOP",'');
+                console.log('no longer a mouse down');
+            }).mousedown(function() {
+                socket.emit('playnote',$(this).text());
+                console.log('clicked with mouse down');
+            });
+
+            $('.playsong').mouseup(function() {
+                socket.emit("STOP",'');
+                console.log('no longer a mouse down');
+            }).mousedown(function() {
+                socket.emit('playsong',$(this).text());
+                console.log('clicked with mouse down');
+            });
+        </script>
+    </body>
+</html>
