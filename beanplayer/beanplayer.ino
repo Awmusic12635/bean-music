@@ -1,6 +1,7 @@
 //SPEAKER PIN IN 3
 int speakerPin = 3;
-
+#define MAX_FREQ 2469
+int toneFreq=0;
 
 String getCommand(){
   ScratchData scratchCommand = Bean.readScratchData(1);
@@ -35,19 +36,23 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   boolean connected = Bean.getConnectionState();
+    
   if(connected){
     String strCmd = getCommand();
-
+ 
     if(strCmd == "STOP"){
        //clear
        noTone(speakerPin);
+       Bean.setLed(0,0,0);
        uint8_t buffer[1]={' '};
        Bean.setScratchData(1,buffer,1);
     }
     
     //if command is empty or single space
     else if(strCmd.length()>0 && strCmd!= " "){
-      int toneFreq = strCmd.toInt();
+      toneFreq = strCmd.toInt();
+      int brightness = map(toneFreq, 163, MAX_FREQ, 0, 255); 
+      Bean.setLed(brightness,brightness,brightness);
       //use tone because it works in the background
       tone(speakerPin,toneFreq);
 
