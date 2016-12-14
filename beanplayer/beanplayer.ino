@@ -51,10 +51,22 @@ void loop() {
     //if command is empty or single space
     else if(strCmd.length()>0 && strCmd!= " "){
       toneFreq = strCmd.toInt();
-      int brightness = map(toneFreq, 163, MAX_FREQ, 0, 255); 
-      Bean.setLed(brightness,brightness,brightness);
+
+            
       //use tone because it works in the background
       tone(speakerPin,toneFreq);
+
+      //set led based on freq octave (downside it seems to cause lag :( if before the tone generation)
+
+      if(toneFreq >= 163 && toneFreq <327){
+        Bean.setLed(255,0,0);
+      }else if(toneFreq >= 327 && toneFreq <654){
+        Bean.setLed(0,255,0);
+      }else if(toneFreq >= 654 && toneFreq <1308){
+        Bean.setLed(0,0,255);
+      }else{
+        Bean.setLed(255,255,255);
+      }
 
     }
   }
